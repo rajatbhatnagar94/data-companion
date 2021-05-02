@@ -9,14 +9,7 @@ def classify_text(text, verbose=False):
     if response.status_code == 200:
         resp = json.loads(response.text)
         if resp and resp['status'] == 'success':
-            predicted_label = resp['predicted_label']
-            obj['predicted_label'] = 'You are not the asshole'
-            if predicted_label == 1:
-                obj['predicted_label'] = 'You are the asshole'
-            elif predicted_label == 2:
-                obj['predicted_label'] = 'Everyone sucks here'
-            elif predicted_label == 3:
-                obj['predicted_label'] = 'No assholes here'
+            obj['predicted_label'] = resp['predicted_label']
     return obj
 
 if __name__ == '__main__':

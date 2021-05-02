@@ -38,14 +38,14 @@ def process_rationales_and_tokens(tokens, rationales):
 
 def fill_highlight_type(zs, tokens, obj, threshold, row, subtask_type):
     length = len(zs)
-    #topk = int((threshold * length))
+    topk = int((threshold * length))
     #sorted_attn_value = sorted(zs, reverse=True)
     threshold_attn = 1.0
     for idx, (token, z) in enumerate(zip(tokens, zs)):
         highlight_type = DEFAULT
-        if SUBTASK_TYPES.get(subtask_type) and SUBTASK_TYPES.get(subtask_type).get('show_highlight') and z >= threshold_attn:
+        if SUBTASK_TYPES.get(subtask_type) and SUBTASK_TYPES.get(subtask_type).get('show_highlight') and z >= threshold_attn and topk > 0:
             highlight_type = TOXIC
-            #topk -= 1
+            topk -= 1
         obj['rationale'].append({
             'id': obj['unique_id'] + SEPARATOR + str(idx),
             'text': token,
