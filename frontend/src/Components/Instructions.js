@@ -10,6 +10,7 @@ const panel = [
 				<List className="list-styles" bulleted>
 					<Item>Please enter a text to find out whether you were an Asshole in the situation</Item>
 					<Item>On the left hand side you could see the various classified posts of r/AmITheAsshole</Item>
+					<Item>The highlighted text represents the most influencial tokens i.e. the tokens which contributed more to this prediction in the text</Item>
 					<Item>Disclaimer: This website is built for the class: CSCI 4802-5802 at the University of Colorado Boulder</Item>
 				</List>
 			),
