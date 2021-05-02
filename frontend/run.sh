@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 
-NAME="toxicity-frontend"
+NAME="data-companion-frontend"
 
-# Activate the virtual environment
-export PATH="/data/anaconda3/bin:$PATH"
-. /data/anaconda3/etc/profile.d/conda.sh
-conda activate rajat-ml-frontend
+eval "$(/home/rajat/miniconda3/bin/conda shell.bash hook)"
+conda activate rajat
 
 echo "Starting $NAME as `whoami`"
 
-cd /home/rajat/repos/explanable-ml-frontend
+cd /home/rajat/repos/data-companion/frontend
 yarn run build
-/home/rajat/.yarn/bin/serve -s -l 3000 build
+yarn serve -s -l 3000 build
