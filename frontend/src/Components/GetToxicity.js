@@ -34,10 +34,16 @@ class GetToxicity extends React.Component {
       axios
         .get(this.urlString, { params })
         .then(response => {
-          let toxicity_text = 'Non Toxic';
+          let toxicity_text = 'You are not the asshole';
           let color = 'green';
           if (response.data.predicted_label === 1) {
-            toxicity_text = 'Toxic';
+            toxicity_text = 'You are the asshole';
+            color = 'red';
+          } else if (response.data.predicted_label === 2) {
+            toxicity_text = 'Everyone sucks here';
+            color = 'red';
+          } else if (response.data.predicted_label === 3) {
+            toxicity_text = 'No assholes here';
             color = 'red';
           }
           this.setState({

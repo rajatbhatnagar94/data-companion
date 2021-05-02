@@ -10,6 +10,18 @@ const onLinkClick = (commentUrl) => {
 const RedditCard = (props) => {
   const { predicted_label } = props
   const cardStyles = {minWidth: '300px'}
+  let toxicity_text = 'You are not the asshole';
+  let color = 'green';
+  if (predicted_label === 1) {
+    toxicity_text = 'You are the asshole';
+    color = 'red';
+  } else if (predicted_label === 2) {
+    toxicity_text = 'Everyone sucks here';
+    color = 'red';
+  } else if (predicted_label === 3) {
+    toxicity_text = 'No assholes here';
+    color = 'red';
+  }
 
   return (
     <Card style={cardStyles}>
@@ -27,7 +39,9 @@ const RedditCard = (props) => {
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
-        {predicted_label}
+        <div style={{color: color}}>
+          {toxicity_text}
+        </div>
       </Card.Content>
     </Card>
   );
