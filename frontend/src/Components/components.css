@@ -1,0 +1,194 @@
+.card-holder {
+    height: 100%;
+}
+.loader-image {
+    margin-top: 30px;
+}
+
+.common-text {
+    display: inline-block;
+}
+
+.unhighlighted-text {
+    background-color: transparent;
+}
+
+.toxic-highlighted-text {
+    background-color: #dc8788;
+}
+
+.nontoxic-highlighted-text {
+    background-color: #52c351;
+}
+
+.buttonSeperator {
+    margin-top: 30px;
+}
+
+.reddit-comment-link {
+    cursor: pointer;
+}
+
+.App {
+    text-align: center;
+  }
+  
+.App-logo {
+    height: 40px;
+}
+
+.App-header {
+    background-color: #222;
+    color: white;
+    position: relative;
+    height: 100px;
+}
+
+.login {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+}
+.username {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    margin: 0px;
+}
+
+.reddit-card-description {
+    word-break: break-all;
+    text-align: left;
+}
+
+.display-count-dev {
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
+}
+
+.reddit-header-text {
+    position: absolute;
+    bottom: 10px;
+    left: 200px;
+    right: 200px;
+    font-weight: 600;
+    font-size: 17px;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+
+.app-logo {
+    height: 40px;
+}
+
+.app-logo-container {
+    position: absolute;
+    top: 20px;
+    left: 300px;
+    right: 300px;
+}
+
+.content-container {
+    background-color: aliceblue;
+    padding: 1em;
+}
+
+.content-small-container {
+    background: white !important;
+    padding: 1em !important;
+}
+
+.card-header {
+    color: #4183c4 !important;
+}
+
+.back-div {
+    top: 20px;
+    left: 20px;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+}
+
+.back-link {
+    color: white;
+    font-weight: 700;
+}
+.back-link:hover {
+    color: white;
+}
+
+.no-cards-container {
+    height: 30px;;
+}
+
+.pagination-container {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.selection-pagination {
+    width: 100px;
+}
+
+.list-styles {
+    text-align: left;
+    padding-left: 20px !important;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+
+.external-link::after {
+    content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
+    margin-left: 5px;
+}
+
+.bottom-card-text {
+    margin-bottom: 5px;
+    margin-top: 10px;
+    color: rgb(0,0,0,0.8);
+    display: flex;
+    justify-content: space-between;
+    line-height: 24px;
+}
+
+.done-button {
+    padding: 5px 10px !important;
+    margin-left: 5px !important;
+}
+@media only screen and (max-width: 600px) {
+    .login {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+    }
+    .username {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    .cards-container {
+        justify-content: center;
+    }
+    .back-div {
+        top: 10px;
+        left: 10px;
+    }    
+    .display-count-dev {
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+    }
+    .App-header {
+        height: 140px;
+    }
+    .app-logo-container {
+        top: 20px;
+        left: 0;
+        right: 0;
+    }    
+    .reddit-header-text {
+        top: 65px;
+        left: 0;
+        right: 0;
+    }    
+}

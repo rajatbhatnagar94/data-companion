@@ -1,0 +1,1 @@
+create table reddit_mod_logs (id serial primary key, action text, created_utc timestamp, details text, log_id text, mod text, sr_id36 text, subreddit text, subreddit_name_prefixed text, target_author text, target_body text, target_fullname text, target_permalink text, target_title text, prediction int, class_prob float[2], created_at timestamp default now());
