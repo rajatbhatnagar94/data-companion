@@ -31,7 +31,8 @@ def get_latest_comments(source: str, task_type: str, sub_task_type: str, limit: 
         predicted_label_filter += " and c.status in %(comment_status)s"
         queryParams['comment_status'] = ('pending', 'recurring')
         get_new_comments_queries = [
-            get_query(predicted_label_filter + " and c.predicted_label = 1 and c.class_prob[2] > 0.5 ", limit),
+            #get_query(predicted_label_filter + " and c.predicted_label = 1 and c.class_prob[2] > 0.5 ", limit),
+            get_query(predicted_label_filter, limit),
         ]
         results = []
         for get_new_comments_query in get_new_comments_queries:

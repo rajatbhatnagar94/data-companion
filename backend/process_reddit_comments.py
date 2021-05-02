@@ -7,55 +7,6 @@ from common import get_response_object, obtain_reddit_instance, TOXIC_HL, TOXIC
 
 redditClient = obtain_reddit_instance()
 
-def send_mod_message(comment):
-	response_obj = get_response_object(comment, TOXIC_HL)
-	subreddit_name = response_obj['source']
-	subreddit = redditClient.subreddit(subreddit_name)
-	## overriding temporarily
-	subreddit = redditClient.redditor('rajatbhatnagar94')
-	subject = "You have a new toxic message"
-	url = f"http://detoxify.machineintheloop.com/reddit/{response_obj.get('source')}?subtask_type=toxic_hl&comment_id={response_obj.get('source_identifier')}"
-	response = requests.get(f"http://tinyurl.com/api-create.php?url={url}")
-	if response.status_code == 200:
-		link = response.text
-		message = f"This comment violates Rule 1. Go to - [link]({link}) if it's an error DetoxifyBot"
-		body = ["We found a toxic comment. Here's the toxic comment - "]
-		body += ["\n\n"]
-		for rationale in response_obj['rationale']:
-			if rationale.get('highlightType') == TOXIC:
-				body += ["**{}**".format(rationale.get('text'))]
-			else:
-				body += [rationale.get('text')]
-		body += ["\n\n\n\n\n"]
-		info = ["More Information\n"]
-		info += ['- Comment Link - [{0}]({0})'.format(response_obj.get('comment_url'))]
-		info += [f"- This comment violates Rule 1. Go to - {url}, if its an error DetoxifyBot"]
-		description = " ".join(body)
-		description += "\n".join(info)
-		subreddit.message(subject, description)
-
-
-def report_comment(comment):
-	redditOldClient = praw.Reddit(client_id='8LNDKl7HusySlQ', client_secret='bvNAk41kz5FW4bJvp_urp5prQbw', password='throwawayTester_blah', user_agent= 'throwawayTester_blah', username='throwawayTester_blah')
-	response_obj = get_response_object(comment, TOXIC_HL)
-	subreddit_name = response_obj['source']
-	comment_id = comment.get('source_identifier')
-	url = f"http://detoxify.machineintheloop.com/reddit/{subreddit_name}?subtask_type=toxic_hl&comment_id={comment_id}"
-	response = requests.get(f"http://tinyurl.com/api-create.php?url={url}")
-	if response.status_code == 200:
-		link = response.text
-		message = f"This comment violates Rule 1. Go to - {link} if it's an error -DetoxifyBot"
-		redditComment = redditOldClient.comment(comment_id)
-		redditComment.report(message)
-		send_mod_message(comment)
-		try:
-		    conn, cur = conn_create()
-		    cur.execute("update comment set reported = true where source_identifier = %s", (comment_id, ))
-		    conn.commit()
-		except Exception as e:
-		    print(f"Exception occurred while updating report in db - {e}")
-
-
 def process_comments(subreddits):
     reporting_allowed_subreddits = ['dragonfliesflaydrama', 'gatech']
     # process all unprocessed comments
@@ -126,9 +77,6 @@ def process_comments(subreddits):
                               predictions[key]['class_prob'],
                               key))
             conn.commit()
-            if predictions[key]['predicted_label'] == 1 and reporting_allowed_subreddits.index(predictions[key]['source']) > -1:
-                comment_db = cur.fetchone()
-                report_comment(comment_db)
         print("processed successfully, count - {0}".format(len(predictions)))
     except Exception as error:
         print("Error {0} occurred while updating processed comment statuses to DB".format(error))
@@ -136,8 +84,7 @@ def process_comments(subreddits):
         conn_close(conn)
 
 if __name__ == '__main__':
-	subreddits = ['dragonfliesflaydrama', 'explainlikeimfive', 'changemyview', 'science', 'coronavirus', 'gatech']
-	#subreddits = ['dragonfliesflaydrama']
+	subreddits = ['amITheAsshole']
 	try:
 		while True:
 			process_comments(subreddits)

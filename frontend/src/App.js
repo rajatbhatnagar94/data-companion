@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import IndexPage from "./Pages/IndexPage/IndexPage"
 import axios from 'axios'
 import { CookiesProvider, withCookies } from 'react-cookie';

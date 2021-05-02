@@ -1,8 +1,7 @@
 import time
 import praw
 
-MODEL_PATH = '/home/rajat/repos/reddit_toxicity_classifier/output_512_modern/'
-CORONAVIRUS_MODEL_PATH = '/home/rajat/repos/reddit_toxicity_classifier/output_coronavirus_both'
+MODEL_PATH = './model/aita/'
 
 SUBTASK_TYPES = {
     'toxic_hl': {

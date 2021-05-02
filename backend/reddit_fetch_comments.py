@@ -53,7 +53,7 @@ def fetch_comments(subreddit_name):
 
 
 if __name__ == '__main__':
-    subreddits = ['dragonfliesflaydrama', 'explainlikeimfive', 'changemyview', 'science', 'coronavirus', 'gatech']
+    subreddits = ['amITheAsshole']
     try:
         for subreddit_name in subreddits:
             Thread(target=fetch_comments, args=(subreddit_name, )).start()

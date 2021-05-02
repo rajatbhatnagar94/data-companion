@@ -8,13 +8,6 @@ import CardLoader from "./CardLoader"
 import { withCookies } from 'react-cookie';
 import Pagination from './Pagination'
 
-const TOXIC = 'toxic'  // To be matched with the db value. Change with caution
-const NON_TOXIC = 'non_toxic'  // To be matched with the db value. Change with caution
-const PROBABLY_TOXIC = 'probably_toxic'
-const AGREE = 'agree'
-const DISAGREE = 'disagree'
-const DONE = 'done'
-
 const options = [{ text: 'Select Page Size', key: '', value: '', disabled: true }].concat([10, 15, 20, 50, 100].map(item => ({
   key: item,
   value: item,
@@ -46,7 +39,7 @@ class RedditCardsContainer extends React.Component {
     }
     componentDidMount() {
       let params = {
-          subreddit_name: "explainlikeimfive",
+          subreddit_name: "amITheAsshole",
           limit: this.state.limit,
           offset: this.state.offset,
           subtask_type: this.props.subtask_type
