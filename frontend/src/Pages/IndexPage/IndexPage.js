@@ -18,6 +18,7 @@ const IndexPage = (props) => {
             <RedditCardContainer
               limit={10}
               subtask_type={TOXIC_HL}
+              subreddit_name={"amITheAsshole"}
             />
             </Grid.Column>
             <Grid.Column width={5}>

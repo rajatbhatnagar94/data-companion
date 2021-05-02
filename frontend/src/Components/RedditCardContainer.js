@@ -39,7 +39,7 @@ class RedditCardsContainer extends React.Component {
     }
     componentDidMount() {
       let params = {
-          subreddit_name: "amITheAsshole",
+          subreddit_name: this.props.subreddit_name,
           limit: this.state.limit,
           offset: this.state.offset,
           subtask_type: this.props.subtask_type
