@@ -2,7 +2,7 @@ from flask import Flask, Response, request
 from flask_cors import CORS
 import json
 import jsonpickle
-from get_tasks import get_tasks, get_latest_comments
+from get_tasks import get_latest_comments
 from classify_text import classify_text
 
 app = Flask(__name__)
@@ -51,4 +51,4 @@ def classify():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5005)
